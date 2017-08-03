@@ -2,14 +2,14 @@
 import requests
 import time
 def main():
- #a = requests.get("https://api.github.com/repos/wequick/Small/stats/participation").json()
- #commits = a['all'][51]
- #print "number of commits in the past week - " + str(commits)
- #b = requests.get("https://api.github.com/repos/wequick/Small/stats/contributors").json()
- #c= b[:-6:-1]
- #print "top 5 conributors:"
- #for key in c:
- #    print key['author']['login']
+ a = requests.get("https://api.github.com/repos/wequick/Small/stats/participation").json()
+ commits = a['all'][51]
+ print "number of commits in the past week - " + str(commits)
+ b = requests.get("https://api.github.com/repos/wequick/Small/stats/contributors").json()
+ c= b[:-6:-1]
+ print "top 5 conributors:"
+ for key in c:
+    print key['author']['login']
  pulls = 0
  i = 0
  d = requests.get("https://api.github.com/repos/wequick/Small/pulls?state=all&page=i").json()
@@ -25,7 +25,8 @@ def main():
     if pulls%30==0:
         i+=1
         d = requests.get("https://api.github.com/repos/wequick/Small/pulls?state=all&page=i").json()
-
+  
+ print " number of pull request in the past month - " +pulls 
 
 if __name__ == '__main__':
     main()
